@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document List</title>
+</head>
+<body>
+    <h1>Document List</h1>
+    <ul>
+        {% for document in object_list %}
+            <li>
+                <a href="{% url 'document-detail' document.pk %}">{{ document.title }}</a>
+                <p>Partner: {{ document.partner_name }}</p>
+                <p>Created by: {{ document.created_by }}</p>
+                <p>Created at: {{ document.created_at }}</p>
+            </li>
+        {% empty %}
+            <li>No documents found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'document-create' %}">Create New Document</a>
+
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
